@@ -94,7 +94,7 @@ const encodeProtobufWithPayload = (protoFile, payloadPath, lookUpType, message) 
             const buffer = CustomMessage.encode(msg).finish();
             const resultFileName = `./serializedBase_64/${new Date().toISOString()}.bin`
 
-            fs.writeFileSync(resultFileName, buffer);
+            fs.writeFileSync(resultFileName, buffer.toString('base64'));
 
             message(`result created ${resultFileName} `)
 
