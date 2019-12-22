@@ -42,7 +42,7 @@ $ node index.js --t=2 --protobufJSON="convertedProto/timestamp_compulsoryName_pr
 
 converts protoFile (.proto) to serialized base64 with data included in payload.json file
 ```bash
-$ node index.js --t=3 --protobufJSON="test.proto" --payload="path/to/payload.json" --lookupType="test.Test"
+$ node index.js --t=3 --protoFile="test.proto" --payload="path/to/payload.json" --lookupType="domain.backend.authtime_v1.proto.RequestTimestamp"
 ```
 
 converts serialized base64 to protobuf message according to .proto schema.
