@@ -3,6 +3,8 @@ const fs = require("fs")
 const argv = require('yargs').argv
 const util = require('util');
 const exec = util.promisify(require('child_process').exec);
+var atob = require('atob');
+var btoa = require('btoa');
 
 
 
@@ -94,7 +96,7 @@ const encodeProtobufWithPayload = (protoFile, payloadPath, lookUpType, message) 
             const buffer = CustomMessage.encode(msg).finish();
             const resultFileName = `./serializedBase_64/${new Date().toISOString()}.bin`
 
-            fs.writeFileSync(resultFileName, buffer.toString('base64'));
+            fs.writeFileSync(resultFileName, btoa(buffer), "binary");
 
             message(`result created ${resultFileName} `)
 
@@ -110,10 +112,9 @@ const decodeProtobuf = (protoFile, lookupType, serializedBase_64, message) => {
 
         var AwesomeMessage = root.lookupType(lookupType);
         fs.readFile(serializedBase_64, (err, data) => {
-                if (err) throw err;
-
-            var message = AwesomeMessage.decode(data);
-            var object = AwesomeMessage.toObject(message, {
+            if (err) throw err;
+            var msg = AwesomeMessage.decode(data);
+            var object = AwesomeMessage.toObject(msg, {
                 longs: String,
                 enums: String,
                 bytes: String,
@@ -147,5 +148,16 @@ const checkArguments = (argv, args) => {
     });
     return isUndefined
 }
+
+const getBase64 = (file) => {
+    var reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = function () {
+      console.log(reader.result);
+    };
+    reader.onerror = function (error) {
+      console.log('Error: ', error);
+    };
+ }
 
 startup();

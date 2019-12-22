@@ -17,5 +17,4 @@ message RequestTimestamp {
     string challenge = 1;
     string minTimestamp = 2;
     string rtcTimestamp = 3;
-
 }

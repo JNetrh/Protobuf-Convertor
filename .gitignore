@@ -6,3 +6,5 @@ node_modules
 convertedProto/*
 convertedSerializedBase_64/*
 serializedBase_64/*
+
+./DS_Store
