@@ -1,0 +1,36 @@
+{
+  "nested": {
+    "domain": {
+      "nested": {
+        "backend": {
+          "nested": {
+            "authtime_v1": {
+              "nested": {
+                "proto": {
+                  "nested": {
+                    "RequestTimestamp": {
+                      "fields": {
+                        "challenge": {
+                          "type": "string",
+                          "id": 1
+                        },
+                        "minTimestamp": {
+                          "type": "string",
+                          "id": 2
+                        },
+                        "rtcTimestamp": {
+                          "type": "string",
+                          "id": 3
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
