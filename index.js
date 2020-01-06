@@ -17,12 +17,6 @@ async function translatePBtoJS(cmd) {
       });
   }
 
-const convertProtobuf = (fromFile, toFile, callback) => {
-    const fileName = `./convertedProto/${new Date().toISOString()}${toFile ? "_" + toFile : ""}_protobufJSON.json`;
-    const cmd = `./node_modules/.bin/pbjs -t json ${fromFile} > ${fileName}`;
-    translatePBtoJS(cmd).then(callback(`succesfully created ${fileName}`))
-}
-
 const run = (message) => {
 
     if(!checkArguments(argv,["t"])){
@@ -51,6 +45,12 @@ const run = (message) => {
 }
 
 
+// type 1
+const convertProtobuf = (fromFile, toFile, callback) => {
+    const fileName = `./convertedProto/${new Date().getTime()}${toFile ? "_" + toFile : ""}_protobufJSON.json`;
+    const cmd = `./node_modules/.bin/pbjs -t json ${fromFile} > ${fileName}`;
+    translatePBtoJS(cmd).then(callback(`succesfully created ${fileName}`))
+}
 
 
 //type 2
@@ -68,9 +68,9 @@ const run = (message) => {
 //           });
             
 //         const buffer = AwesomeMessage.encode(object).finish();
-//         const resultFileName = `./serializedBase_64/${new Date().toISOString()}.bin`
+//         const resultFileName = `./serializedBase_64/${new Date().String()}.bin`
         
-//         fs.writeFile(resultFileName, buffer.toString("base64"), (err) => {
+//         fs.writeFile(resultFileName, buffer.getTime("base64"), (err) => {
 //             if (err) throw err;
 //         });
 
@@ -87,14 +87,14 @@ const encodeProtobufWithPayload = (protoFile, payloadPath, lookUpType, message) 
                 if (err) throw err;
 
             const payload = JSON.parse(data);
-            const errMsg = CustomMessage.verify(payload);
-            if (errMsg){
-                throw Error(errMsg);
-            }
+            // const errMsg = CustomMessage.verify(payload);
+            // if (errMsg){
+            //     throw Error(errMsg);
+            // }
             const msg = CustomMessage.create(payload); 
         
             const buffer = CustomMessage.encode(msg).finish();
-            const resultFileName = `./serializedBase_64/${new Date().toISOString()}.bin`
+            const resultFileName = `./serializedBase_64/${new Date().getTime()}.bin`
 
             fs.writeFileSync(resultFileName, btoa(buffer), "binary");
 
