@@ -87,10 +87,12 @@ const encodeProtobufWithPayload = (protoFile, payloadPath, lookUpType, message) 
                 if (err) throw err;
 
             const payload = JSON.parse(data);
-            // const errMsg = CustomMessage.verify(payload);
-            // if (errMsg){
-            //     throw Error(errMsg);
-            // }
+            const errMsg = CustomMessage.verify(payload);
+            if (errMsg){
+                // throw Error(errMsg);
+                console.log("------------\nerror occured: ",errMsg)
+                console.log("\nfunctionality might be unpredictable \n------------")
+            }
             const msg = CustomMessage.create(payload); 
         
             const buffer = CustomMessage.encode(msg).finish();
