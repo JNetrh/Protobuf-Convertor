@@ -47,5 +47,5 @@ $ node index.js --t=3 --protoFile="test.proto" --payload="path/to/data.json" --l
 
 converts serialized base64 to protobuf message according to .proto schema.
 ```bash
-$ ndoe index.js --t=4 --protoFile="patht/to/example.proto" --serializedBase_64="path/to/serializedBase64" --lookupType="test.Test"
+$ node index.js --t=4 --protoFile="test.proto" --serializedBase_64="serializedBase_64/file.bin" --lookupType="domain.backend.authtime_v1.proto.RequestTimestamp"
 ```

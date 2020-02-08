@@ -96,9 +96,13 @@ const encodeProtobufWithPayload = (protoFile, payloadPath, lookUpType, message) 
             const msg = CustomMessage.create(payload); 
         
             const buffer = CustomMessage.encode(msg).finish();
-            const resultFileName = `./serializedBase_64/${new Date().getTime()}.bin`
+            var decoder = new TextDecoder('utf8');
+            var b64encoded = btoa(decoder.decode(buffer));
 
-            fs.writeFileSync(resultFileName, btoa(buffer), "binary");
+
+            const resultFileName = `./serializedBase_64/${new Date().getTime()}.bin`
+            console.log(b64encoded)
+            fs.writeFileSync(resultFileName, b64encoded, "binary");
 
             message(`result created ${resultFileName} `)
 
@@ -113,9 +117,12 @@ const decodeProtobuf = (protoFile, lookupType, serializedBase_64, message) => {
             if (err) throw err;
 
         var AwesomeMessage = root.lookupType(lookupType);
-        fs.readFile(serializedBase_64, (err, data) => {
+        fs.readFile(serializedBase_64, "utf-8" ,(err, data) => {
             if (err) throw err;
-            var msg = AwesomeMessage.decode(data);
+
+            var u8_2 = new Uint8Array(atob(data).split("").map(function(c) {
+                return c.charCodeAt(0); }));
+            var msg = AwesomeMessage.decode(u8_2);
             var object = AwesomeMessage.toObject(msg, {
                 longs: String,
                 enums: String,
