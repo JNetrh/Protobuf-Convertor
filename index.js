@@ -128,7 +128,7 @@ const decodeProtobuf = (protoFile, lookupType, serializedBase_64, message) => {
                 enums: String,
                 bytes: String,
             });
-            const resultFileName = `./convertedSerializedBase_64/${new Date()}.json`;
+            const resultFileName = `./convertedSerializedBase_64/${new Date().getTime()}.json`;
             fs.writeFileSync(resultFileName, JSON.stringify(object));
 
             message(`result created ${resultFileName} `)
