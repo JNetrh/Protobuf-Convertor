@@ -23,7 +23,7 @@ Pull the project from github CLI or Download directly .zip file and unpack
 git@github.com:JNetrh/Protobuf-Convertor.git
 ```
 
-Install dependencies in the same folder as package.json. It will install necessary
+Install dependencies in the same folder (root) as package.json. It will install necessary
 libraries. 
 ```bash
 $ npm install
