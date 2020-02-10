@@ -43,7 +43,7 @@ $ npm install
 Converts a message structure (proto scheme) .proto file into a corresponding .json file
 scheme/structure without values
 ```bash
-$ node index.js --t=1 --protoFile=&quot;patht/to/test.proto&quot; --outputFileName=&quot;compulsoryName&quot;
+$ node index.js --t=1 --protoFile="path/to/test.proto" --outputFileName="compulsoryName"
 ```
 
 <!-- converts data-filled protobufJSON.json to serialized base64
@@ -53,10 +53,10 @@ $ node index.js --t=2 --protobufJSON="convertedProto/timestamp_compulsoryName_pr
 
 Converts the payload data json file into a serialized base64 binary message format (proto message) and stores it into the /serializedBase_64 folder
 ```bash
-$ node index.js --t=3 --protoFile=&quot;test.proto&quot; --payload=&quot;path/to/data.json&quot; --lookupType=&quot;domain.backend.person.proto.RequestPersonData&quot;
+$ node index.js --t=3 --protoFile="test.proto" --payload="path/to/data.json" --lookupType="domain.backend.person.proto.RequestPersonData"
 ```
 
 Converts the serializedBase_64 bin file (proto binary message) into a data json file and stores it into the /convertedSerializedBase_64 folder
 ```bash
-$ node index.js --t=4 --protoFile=&quot;test.proto&quot; --serializedBase_64=&quot;serializedBase_64/file.bin&quot; --lookupType=&quot;domain.backend.person.proto.RequestPersonData&quot;
+$ node index.js --t=4 --protoFile="test.proto" --serializedBase_64="serializedBase_64/file.bin" --lookupType="domain.backend.person.proto.RequestPersonData"
 ```
