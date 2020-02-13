@@ -29,7 +29,7 @@ libraries.
 $ npm install
 ```
 
-#### argments
+#### arguments
 - --t                   type of the conversion
 - --protoFile           the message structure (proto scheme) .proto file. See test.proto
 - --outputFileName      a compulsary name of the output file. If not given the name is folded from the current timestamp.
