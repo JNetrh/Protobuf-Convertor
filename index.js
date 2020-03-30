@@ -100,9 +100,12 @@ const encodeProtobufWithPayload = (protoFile, payloadPath, lookUpType, message) 
             var b64encoded = btoa(decoder.decode(buffer));
 
 
-            const resultFileName = `./serializedBase_64/${new Date().getTime()}.bin`
+            const resultFileName = `./serializedBase_64/${new Date().getTime()}`
+            const suffix = ".bin"
+
             console.log(b64encoded)
-            fs.writeFileSync(resultFileName, b64encoded, "binary");
+            fs.writeFileSync(resultFileName + suffix, b64encoded, "binary");
+            fs.writeFileSync(resultFileName + "_buffer" + suffix, buffer);
 
             message(`result created ${resultFileName} `)
 
