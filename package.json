@@ -4,7 +4,7 @@
     "btoa": "^1.2.1",
     "child_process": "^1.0.2",
     "fs": "^0.0.1-security",
-    "protobufjs": "^6.10.3",
+    "protobufjs": "^7.2.4",
     "yargs": "^15.0.2"
   }
 }
